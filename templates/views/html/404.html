@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Página no encontrada · FitLife{% endblock %}
+{% block content %}
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="public-header" id="site-header">
+  <a class="brand" href="/" aria-label="FitLife, ir al inicio"><span class="fitlife-wordmark"><span>Fit</span><span>Life</span></span></a>
+  <nav aria-label="Navegación principal"><a href="/sedes/">Encuentra dónde entrenar</a><a href="/#actividades">Clases</a><a href="/#planes">Planes</a><a href="/#experiencia">Cómo funciona</a></nav>
+  <div class="public-actions" id="public-actions">
+    <div class="public-auth-links" id="public-auth-links"><a class="text-link" href="/iniciar-sesion/">Ya tengo cuenta</a><a class="button button-dark" href="/iniciar-sesion/?crear=1">Crear cuenta <span>↗</span></a></div>
+    <button class="public-profile hidden" id="public-profile" type="button" aria-label="Abrir menú de cuenta" aria-controls="public-sidebar" aria-expanded="false">
+      <span class="avatar topbar-avatar" id="public-avatar">F</span>
+      <span class="public-profile-copy"><strong id="public-user-name"></strong><small id="public-user-role">Socio FitLife</small></span>
+    </button>
+    <button class="menu-toggle public-menu-toggle" id="public-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="public-sidebar"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<button class="sidebar-scrim" id="public-sidebar-scrim" type="button" aria-label="Cerrar menú"></button>
+<aside class="sidebar public-sidebar" id="public-sidebar" aria-label="Menú FitLife" aria-hidden="true" inert>
+  <div class="drawer-header">
+    <a class="dashboard-brand" href="/panel/" aria-label="FitLife, ir al panel"><span class="fitlife-wordmark"><span>Fit</span><span>Life</span></span></a>
+    <button class="drawer-close" id="public-drawer-close" type="button" aria-label="Cerrar menú">×</button>
+  </div>
+  <div id="public-drawer-guest">
+    <a class="dashboard-cta drawer-quick-action public-drawer-cta" href="/#actividades">Explorar clases</a>
+    <nav class="public-drawer-links" aria-label="Navegación">
+      <a href="/iniciar-sesion/">Iniciar sesión</a>
+      <a href="/sedes/">Encuentra dónde entrenar</a>
+      <a href="/#actividades">Clases</a>
+      <a href="/#planes">Planes</a>
+      <a href="/#experiencia">Cómo funciona</a>
+    </nav>
+  </div>
+  <div id="public-drawer-member" class="hidden">
+    <a class="dashboard-cta drawer-quick-action public-drawer-cta" href="/panel/?section=classes">Explorar clases</a>
+    <div class="drawer-profile">
+      <span class="avatar" id="public-drawer-avatar">F</span>
+      <span class="profile-text"><strong id="public-drawer-name"></strong><small id="public-drawer-role">Socio FitLife</small></span>
+    </div>
+    <nav class="drawer-nav" aria-label="Menú de cuenta">
+      <div class="drawer-nav-group"><span class="drawer-nav-label">Principal</span><a class="drawer-nav-item" href="/panel/?section=membership">Mi suscripción</a></div>
+      <div class="drawer-nav-group"><span class="drawer-nav-label">Mi actividad</span><a class="drawer-nav-item" href="/panel/?section=plans">Planes disponibles</a><a class="drawer-nav-item" href="/panel/?section=reservations">Mis reservas</a><a class="drawer-nav-item" href="/panel/?section=credential">Mi credencial QR</a></div>
+      <div class="drawer-nav-group"><span class="drawer-nav-label">Mi espacio</span><a class="drawer-nav-item" href="/panel/?section=gym">Tu gimnasio</a></div>
+      <div class="drawer-nav-group"><span class="drawer-nav-label">Gestión</span><a class="drawer-nav-item" href="/panel/?section=classes">Clases y actividades</a></div>
+    </nav>
+    <button class="sidebar-logout" id="public-logout" type="button"><span aria-hidden="true">↪</span> Cerrar sesión</button>
+  </div>
+</aside>
+<main id="contenido" class="not-found-page">
+  <section class="not-found-hero" aria-labelledby="not-found-title">
+    <div class="not-found-copy">
+      <h1 id="not-found-title">Perdiste el ritmo.</h1>
+      <p>La ruta que intentas alcanzar no existe en nuestro sistema. Revisa la URL o regresa para organizar tu próxima rutina.</p>
+      <div class="not-found-actions">
+        <a class="button button-primary" href="/">Volver al inicio <span aria-hidden="true">→</span></a>
+        <a class="not-found-classes" href="/#actividades">Explorar clases</a>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/not-found.js' %}" defer></script>{% endblock %}

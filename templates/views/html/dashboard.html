@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}FitLife · Tu espacio de entrenamiento{% endblock %}
+{% block content %}
+<div class="app-shell">
+  <main class="main-area">
+    <header class="topbar">
+      <a class="dashboard-brand" href="/" aria-label="FitLife, ir al inicio"><span class="fitlife-wordmark"><span>Fit</span><span>Life</span></span></a>
+      <nav class="top-nav" id="main-nav" aria-label="Navegación principal"></nav>
+      <div class="topbar-actions">
+        <div class="topbar-profile">
+          <span class="avatar topbar-avatar" id="top-avatar">F</span>
+          <span class="topbar-profile-copy"><strong id="top-name">FitLife</strong><small id="top-role">FitLife</small></span>
+        </div>
+        <button class="dashboard-cta" id="top-quick-action" type="button" data-quick-action>Explorar clases</button>
+        <button class="menu-toggle" id="mobile-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+      </div>
+    </header>
+    <div class="breadcrumbs"><span id="breadcrumb-section">FitLife</span><span class="breadcrumb-separator">/</span><strong id="page-title">Inicio</strong></div>
+    <div id="page-content" class="page-content">
+      <div class="loading-state"><span class="spinner"></span> Cargando tu espacio FitLife…</div>
+    </div>
+    <footer class="app-footer">© FitLife <span id="current-year"></span><span>Entrena a tu manera.</span></footer>
+  </main>
+</div>
+<button class="sidebar-scrim" id="sidebar-scrim" type="button" aria-label="Cerrar menú"></button>
+<aside class="sidebar" id="sidebar" aria-label="Menú FitLife" aria-hidden="true" inert>
+  <div class="drawer-header">
+    <a class="dashboard-brand" href="/" aria-label="FitLife, ir al inicio"><span class="fitlife-wordmark"><span>Fit</span><span>Life</span></span></a>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="Cerrar menú">×</button>
+  </div>
+  <button class="dashboard-cta drawer-quick-action" id="drawer-quick-action" type="button" data-quick-action>Explorar clases</button>
+  <div class="drawer-profile">
+    <span class="avatar" id="user-avatar">F</span>
+    <span class="profile-text"><strong id="user-name">FitLife</strong><small id="user-role">Socio</small></span>
+  </div>
+  <nav class="drawer-nav" id="drawer-nav" aria-label="Menú lateral"></nav>
+  <button class="sidebar-logout" type="button" data-logout><span aria-hidden="true">↪</span> Cerrar sesión</button>
+</aside>
+<div class="toast-container" id="toast-container" aria-live="polite"></div>
+<div class="modal-backdrop hidden" id="credential-modal" role="dialog" aria-modal="true" aria-labelledby="credential-title">
+  <section class="credential-modal">
+    <button class="modal-x" type="button" data-close-credential aria-label="Cerrar">×</button>
+    <h2 id="credential-title">Tu credencial FitLife</h2>
+    <p class="muted" id="credential-description">Presenta el código QR en el acceso de tu sede.</p>
+    <div class="membership-card">
+      <div class="credential-info">
+        <span class="credential-label" id="credential-label">FITLIFE</span>
+        <span class="credential-avatar" aria-hidden="true"><i></i><b></b></span>
+        <h3 id="credential-name">Tu nombre</h3>
+        <p id="credential-plan">Membresía</p>
+        <p class="credential-validity" id="credential-validity">Control de acceso QR</p>
+        <p id="credential-benefits" class="credential-validity hidden"></p>
+        <div class="credential-qr-frame"><div id="credential-qr"></div></div>
+      </div>
+      <div class="credential-stripe"><span>FITLIFE · ACCESO PERSONAL</span><i></i></div>
+    </div>
+    <button class="button button-outline button-wide" type="button" data-close-credential>Cerrar</button>
+  </section>
+</div>
+<div class="modal-backdrop hidden" id="class-image-modal" role="dialog" aria-modal="true" aria-labelledby="class-image-title">
+  <section class="image-preview-modal">
+    <button class="modal-x" type="button" data-close-class-image aria-label="Cerrar imagen ampliada">×</button>
+    <h2 id="class-image-title">Imagen de la clase</h2>
+    <img id="class-image-full" alt="">
+  </section>
+</div>
+<dialog class="trial-confirmation" id="trial-confirmation" aria-labelledby="trial-confirmation-title" aria-describedby="trial-confirmation-message">
+  <span class="eyebrow">FITLIFE · PLANES</span>
+  <h2 id="trial-confirmation-title">Activar prueba gratuita</h2>
+  <p id="trial-confirmation-message"></p>
+  <div class="trial-confirmation-actions">
+    <form method="dialog"><button class="button button-light" value="cancel">Ahora no</button></form>
+    <form method="dialog"><button class="button button-primary" value="confirm">Activar prueba</button></form>
+  </div>
+</dialog>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/vendor/jsQR.js' %}?v=1.4.0" defer></script><script src="{% static 'js/dashboard.js' %}?v=20261110-modular-dashboard" type="module"></script>{% endblock %}

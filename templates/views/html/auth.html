@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Acceso · FitLife{% endblock %}
+{% block content %}
+<main class="auth-layout">
+  <section class="auth-brand">
+    <a class="brand brand-light" href="/" aria-label="FitLife, ir al inicio"><span class="fitlife-wordmark"><span>Fit</span><span>Life</span></span></a>
+    <div>
+      <p class="eyebrow">TU ESPACIO, TU RITMO</p>
+      <h1>Entrena con<br>un plan para ti.</h1>
+      <p>Reserva tu próxima clase, revisa tu membresía y accede al gimnasio desde un solo lugar.</p>
+    </div>
+    <span class="auth-footnote">Movimiento que te hace bien.</span>
+  </section>
+  <section class="auth-panel">
+    <div class="auth-card">
+      <a class="brand auth-mobile-brand" href="/" aria-label="FitLife, ir al inicio"><span class="fitlife-wordmark"><span>Fit</span><span>Life</span></span></a>
+      <p class="eyebrow">BIENVENIDO A FITLIFE</p>
+      <h2 id="auth-title">Inicia sesión</h2>
+      <p class="muted" id="auth-subtitle">Continúa con tu cuenta para ver tu actividad.</p>
+      <div class="auth-tabs" role="tablist">
+        <button class="auth-tab active" type="button" data-auth-mode="login">Iniciar sesión</button>
+        <button class="auth-tab" type="button" data-auth-mode="register">Crear cuenta</button>
+      </div>
+      <form id="auth-form">
+        <div class="register-field hidden">
+          <label for="auth-nombres">Nombre</label>
+          <input id="auth-nombres" name="nombres" autocomplete="given-name" minlength="3" maxlength="100" data-person-name data-name-required="true" aria-describedby="auth-nombres-error">
+          <small class="field-validation-error hidden" id="auth-nombres-error" aria-live="polite"></small>
+        </div>
+        <div class="register-field hidden">
+          <label for="auth-apellido">Apellido paterno</label>
+          <input id="auth-apellido" name="apellido_paterno" autocomplete="family-name" minlength="3" maxlength="100" data-person-name data-name-required="true" aria-describedby="auth-apellido-error">
+          <small class="field-validation-error hidden" id="auth-apellido-error" aria-live="polite"></small>
+        </div>
+        <div class="register-field hidden">
+          <label for="auth-apellido-materno">Apellido materno <span class="muted"></span></label>
+          <input id="auth-apellido-materno" name="apellido_materno" autocomplete="additional-name" minlength="3" maxlength="100" data-person-name data-name-required="false" aria-describedby="auth-apellido-materno-error">
+          <small class="field-validation-error hidden" id="auth-apellido-materno-error" aria-live="polite"></small>
+        </div>
+        <div class="register-field hidden">
+          <label for="auth-documento">RUT</label>
+          <input id="auth-documento" name="rut" autocomplete="off" inputmode="text" required aria-describedby="rut-hint rut-error">
+          <p class="form-hint" id="rut-hint">Puedes escribirlo con o sin puntos y guion. Ejemplo: 1.000.005-K.</p>
+          <p class="rut-feedback hidden" id="rut-error" aria-live="polite"></p>
+        </div>
+        <div class="register-field hidden">
+          <label for="auth-telefono">Teléfono</label>
+          <div class="phone-input" data-phone-field>
+            <span class="phone-prefix" aria-hidden="true">+56</span>
+            <input id="auth-telefono" name="telefono" type="tel" inputmode="numeric" pattern="[0-9]{9}" autocomplete="tel-national" placeholder="Ingresar 9 dígitos" maxlength="9" aria-describedby="auth-telefono-error" data-chilean-phone>
+          </div>
+          <p class="phone-error hidden" id="auth-telefono-error" aria-live="polite">Ingresa tu número de teléfono</p>
+        </div>
+        <label for="auth-correo" id="auth-identifier-label">Correo electrónico o RUT</label>
+        <input id="auth-correo" name="correo" type="text" required autocomplete="username">
+        <label for="auth-contrasena">Contraseña</label>
+        <input id="auth-contrasena" name="contrasena" type="password" required autocomplete="current-password">
+        <p class="form-hint hidden" id="password-hint">Usa al menos 12 caracteres; evita datos personales y contraseñas comunes.</p>
+        <div id="auth-error" class="notice notice-error hidden" role="alert"></div>
+        <button class="button button-primary button-wide" id="auth-submit" type="submit">Iniciar sesión</button>
+      </form>
+      <p class="auth-terms">Al continuar, tus datos se usarán para gestionar tu cuenta FitLife.</p>
+    </div>
+  </section>
+</main>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/auth.js' %}" defer></script>{% endblock %}

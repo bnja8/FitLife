@@ -1,0 +1,48 @@
+name: Quality and security baseline
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      FITLIFE_DB_ENGINE: sqlite
+      DJANGO_DEBUG: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: python -m pip install -r requirements.txt
+      - run: python manage.py check
+      - run: python manage.py test api
+      - run: node --check templates/views/js/auth.js
+      - run: node --check templates/views/js/dashboard.js
+      - run: node --check templates/views/js/home.js
+
+  production-settings:
+    runs-on: ubuntu-latest
+    env:
+      FITLIFE_DB_ENGINE: sqlite
+      DJANGO_DEBUG: "false"
+      DJANGO_SECRET_KEY: "ci-only-not-a-real-secret-key-0123456789-abcdefghijklmnopqrstuvwxyz"
+      DJANGO_ALLOWED_HOSTS: "localhost"
+      DJANGO_SECURE_SSL_REDIRECT: "true"
+      DJANGO_SECURE_HSTS_SECONDS: "31536000"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python manage.py check --deploy --fail-level ERROR

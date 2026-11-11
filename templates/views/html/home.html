@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}FitLife · Entrena a tu manera{% endblock %}
+{% block content %}
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="public-header" id="site-header">
+  <a class="brand" href="/" aria-label="FitLife, ir al inicio"><span class="fitlife-wordmark"><span>Fit</span><span>Life</span></span></a>
+  <nav aria-label="Navegación principal"><a href="/sedes/">Encuentra dónde entrenar</a><a href="#actividades">Clases</a><a href="#planes">Planes</a><a href="#experiencia">Cómo funciona</a></nav>
+  <div class="public-actions" id="public-actions">
+    <div class="public-auth-links" id="public-auth-links"><a class="text-link" href="/iniciar-sesion/">Ya tengo cuenta</a><a class="button button-dark" href="/iniciar-sesion/?crear=1">Crear cuenta <span>↗</span></a></div>
+    <button class="public-profile hidden" id="public-profile" type="button" aria-label="Abrir menú de cuenta" aria-controls="public-sidebar" aria-expanded="false">
+      <span class="avatar topbar-avatar" id="public-avatar">F</span>
+      <span class="public-profile-copy"><strong id="public-user-name"></strong><small id="public-user-role">Socio FitLife</small></span>
+    </button>
+    <button class="menu-toggle public-menu-toggle" id="public-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="public-sidebar"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<button class="sidebar-scrim" id="public-sidebar-scrim" type="button" aria-label="Cerrar menú"></button>
+<aside class="sidebar public-sidebar" id="public-sidebar" aria-label="Menú FitLife" aria-hidden="true" inert>
+  <div class="drawer-header">
+    <a class="dashboard-brand" href="/panel/" aria-label="FitLife, ir al panel"><span class="fitlife-wordmark"><span>Fit</span><span>Life</span></span></a>
+    <button class="drawer-close" id="public-drawer-close" type="button" aria-label="Cerrar menú">×</button>
+  </div>
+  <div id="public-drawer-guest">
+    <a class="dashboard-cta drawer-quick-action public-drawer-cta" href="#actividades">Explorar clases</a>
+    <nav class="public-drawer-links" aria-label="Navegación">
+      <a href="/iniciar-sesion/">Iniciar sesión</a>
+      <a href="/sedes/">Encuentra dónde entrenar</a>
+      <a href="#actividades">Clases</a>
+      <a href="#planes">Planes</a>
+      <a href="#experiencia">Cómo funciona</a>
+    </nav>
+  </div>
+  <div id="public-drawer-member" class="hidden">
+    <a class="dashboard-cta drawer-quick-action public-drawer-cta" href="/panel/?section=classes">Explorar clases</a>
+    <div class="drawer-profile">
+      <span class="avatar" id="public-drawer-avatar">F</span>
+      <span class="profile-text"><strong id="public-drawer-name"></strong><small id="public-drawer-role">Socio FitLife</small></span>
+    </div>
+    <nav class="drawer-nav" aria-label="Menú de cuenta">
+      <div class="drawer-nav-group"><span class="drawer-nav-label">Principal</span><a class="drawer-nav-item" href="/panel/?section=membership">Mi suscripción</a></div>
+      <div class="drawer-nav-group"><span class="drawer-nav-label">Mi actividad</span><a class="drawer-nav-item" href="/panel/?section=plans">Planes disponibles</a><a class="drawer-nav-item" href="/panel/?section=reservations">Mis reservas</a><a class="drawer-nav-item" href="/panel/?section=credential">Mi credencial QR</a></div>
+      <div class="drawer-nav-group"><span class="drawer-nav-label">Mi espacio</span><a class="drawer-nav-item" href="/panel/?section=gym">Tu gimnasio</a></div>
+      <div class="drawer-nav-group"><span class="drawer-nav-label">Gestión</span><a class="drawer-nav-item" href="/panel/?section=classes">Clases y actividades</a></div>
+    </nav>
+    <button class="sidebar-logout" id="public-logout" type="button"><span aria-hidden="true">↪</span> Cerrar sesión</button>
+  </div>
+</aside>
+<main id="contenido">
+  <div class="brand-ribbon" aria-label="FitLife: entrena, reserva y avanza">
+    <span>ENTRENA</span><b>·</b><span>RESERVA</span><b>·</b><span>AVANZA A TU RITMO</span>
+  </div>
+  <section class="landing-hero" aria-labelledby="home-title">
+    <div class="landing-copy">
+      <span class="eyebrow"><i class="eyebrow-dot"></i> TU ENTRENAMIENTO, MÁS SIMPLE</span>
+      <h1 id="home-title">Encuentra tu próxima clase.<br><span>Entrena a tu manera.</span></h1>
+      <p>Explora horarios, revisa los cupos y reserva tu lugar. Organiza tu rutina desde un solo espacio.</p>
+      <div class="landing-actions">
+        <a class="button button-primary" href="#actividades">Explorar clases <span>↗</span></a>
+        <a class="landing-member-link" href="#planes">Comparar planes</a>
+      </div>
+      <div class="hero-shortcuts" aria-label="Accesos rápidos">
+        <a href="#actividades"><span>01</span> Ver horarios</a>
+        <a href="#planes"><span>02</span> Comparar planes</a>
+        <a href="/iniciar-sesion/"><span>03</span> Ya tengo cuenta</a>
+      </div>
+    </div>
+  </section>
+  <section class="plans-section" id="planes" aria-labelledby="plans-title">
+    <div class="section-heading section-heading-row"><div><span class="eyebrow">MEMBRESÍAS FITLIFE</span><h2 id="plans-title">Un plan que se<br>adapta a tu rutina.</h2></div><p>Revisa duración, precio y beneficios para encontrar la alternativa adecuada para ti.</p></div>
+    <div class="landing-plans" id="landing-plans" aria-live="polite" aria-busy="true"><div class="loading-state"><span class="spinner"></span> Cargando planes…</div></div>
+    <p class="plans-note">¿Tienes dudas? <a href="/iniciar-sesion/?crear=1">Crea tu cuenta</a> y consulta las opciones disponibles con el equipo FitLife.</p>
+  </section>
+  <section class="activity-section" id="actividades" aria-labelledby="activities-title">
+    <div class="section-heading section-heading-row"><div><span class="eyebrow">HORARIOS ACTUALIZADOS</span><h2 id="activities-title">Encuentra tu próxima<br>clase.</h2></div><a class="text-link" href="/iniciar-sesion/?continuar=clases">Ver calendario completo <span aria-hidden="true">↗</span></a></div>
+    <div class="activity-grid" id="landing-activities" aria-live="polite" aria-busy="true">
+      <div class="loading-state"><span class="spinner"></span> Cargando próximas actividades…</div>
+    </div>
+    <p class="activity-signin-note">Para reservar o unirte a una lista de espera, <a href="/iniciar-sesion/?continuar=clases">inicia sesión</a> o <a href="/iniciar-sesion/?crear=1&amp;continuar=clases">crea tu cuenta</a>.</p>
+  </section>
+  <section class="experience-section" id="experiencia" aria-labelledby="experience-title">
+    <div class="section-heading"><span class="eyebrow">TU ESPACIO FITLIFE</span><h2 id="experience-title">De elegir una clase<br>a llevar tu progreso.</h2><p>Un recorrido sencillo para planificar, entrenar y mantener tu actividad organizada.</p></div>
+    <div class="feature-grid">
+      <article class="feature-card"><span class="feature-number">01 / DESCUBRE</span><div class="feature-symbol" aria-hidden="true">◷</div><h3>Encuentra un horario</h3><p>Consulta las próximas actividades y revisa cupos, fechas y valores antes de elegir.</p><a class="feature-link" href="#actividades">Ver próximas clases <span aria-hidden="true">↗</span></a></article>
+      <article class="feature-card feature-highlight"><span class="feature-number">02 / RESERVA</span><div class="feature-symbol" aria-hidden="true">✓</div><h3>Guarda tu lugar</h3><p>Inicia sesión para reservar. Si una clase está completa, puedes solicitar un lugar en la lista de espera.</p><a class="feature-link" href="/iniciar-sesion/?continuar=clases">Ir a mis clases <span aria-hidden="true">↗</span></a></article>
+      <article class="feature-card"><span class="feature-number">03 / ORGANIZA</span><div class="feature-symbol" aria-hidden="true">⌁</div><h3>Todo en tu espacio</h3><p>Consulta tus reservas, tu membresía y tu credencial digital en un solo lugar.</p><a class="feature-link" href="/iniciar-sesion/">Acceder a mi cuenta <span aria-hidden="true">↗</span></a></article>
+    </div>
+  </section>
+  <section class="landing-cta" aria-labelledby="join-title"><div><span class="eyebrow">EMPIEZA CUANDO QUIERAS</span><h2 id="join-title">Tu próxima clase<br>está más cerca.</h2><p>Explora las actividades y encuentra un horario para ti.</p></div><div class="landing-cta-actions"><a class="button button-dark" href="#actividades">Ver clases <span aria-hidden="true">↗</span></a><a class="landing-member-link" href="/iniciar-sesion/?crear=1">Crear cuenta</a></div></section>
+</main>
+<div class="gym-public-modal hidden" id="public-gym-modal" role="dialog" aria-modal="true" aria-labelledby="public-gym-title">
+  <section class="gym-public-modal-card">
+    <button class="gym-public-modal-close" type="button" data-close-public-gym aria-label="Cerrar">×</button>
+    <div id="public-gym-details"></div>
+  </section>
+</div>
+{% include "views/html/partials/public_footer.html" %}
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/home.js' %}?v=20261110-membership-roles" defer></script>{% endblock %}
